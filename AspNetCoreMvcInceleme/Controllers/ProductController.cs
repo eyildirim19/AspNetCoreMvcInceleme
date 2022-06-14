@@ -8,5 +8,10 @@ namespace AspNetCoreMvcInceleme.Controllers
         {
             return View();
         }
+
+        public IActionResult Detay(string kategori, string title, string ilanno)
+        {
+            return View();
+        }
     }
 }

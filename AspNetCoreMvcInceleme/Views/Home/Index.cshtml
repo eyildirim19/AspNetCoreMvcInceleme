@@ -1,12 +1,37 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<html>
+﻿<html>
 <head>
+	
+
+	<link href="~/Content/Sablon.css"  rel="stylesheet"/>
+	<link href="~/Style.css" rel="stylesheet" />
+
 </head>
 <body>
 
+	<header>
+
+	</header>
+
+	<a asp-action="Index" asp-controller="Home" asp-area="Admin">Yönetim Paneline Git</a>
 
 	<a asp-action="Sayfa" asp-controller="Product"> ...Ürünler Sayfasına Git...  </a>
+	<a asp-action="List" asp-controller="Categories" asp-route-id="1000"> ...Kategori Sayfasına Git...</a>
 
+	@{
+		// koleksiyon mantığında veri tutmamızı sağlayan ypaıdır. List'ten farkı dictonary'de keyler(index) tarafımızdan verilir
+		Dictionary<string, string> ornekData = new Dictionary<string, string>();
+		ornekData.Add("10004", "sahibinden-satilik-oto");
+		ornekData.Add("10005", "sahibinden-satilik-villa");
+		ornekData.Add("10006", "sitenin-en-ucuz-arabasi-baska-yok-fiyat-600000");
+	}
+
+	<!--not url'den actiona bekledinen parametreler taghelper ile asp-route- ile gönderilir...-->
+	@foreach (var item in ornekData)
+	{
+		<a asp-action="Detay" asp-controller="Product"
+	   asp-route-kategori="satilik" asp-route-title="@item.Value"
+	   asp-route-ilanno="@item.Key">Ürünün Detayı</a>
+	}
 
 </body>
 </html>
