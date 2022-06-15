@@ -1,4 +1,4 @@
-using AspNetCoreMvcInceleme.Helpers;
+using AspNetCoreMvcMiddleware.Helpers;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,15 +37,17 @@ var app = builder.Build();
 
 //app.UseMiddleware => kendi middlewarelerimizi tetiklemek için kullanýlýr...
 //app.UseMiddleware<MyMiddleware>(); // yazdýðýmýz middleware tetikliyoruz...
+//app.UseMiddleware<UserCheckMiddleware>();
+
+app.UseCheckControl();
+app.UseMyControl();
 
 // Middlewarelar IApplicationBuilder interface'sine extend edilmiþ metotlardýr. Bizde Bu interface extension metot yazar bu interface üzerinden middlewarelerimizi tetikleyebiliriz...
-
 
 // middlewareleri kullanýyoruz.. Middleware metotlarý use ile baþlar..
 app.UseStaticFiles(); // =>wwwroot folderýný açar
 
 //app.Run(); // eðer burayý açarsak aþaðýdaki middlewareler tetiklenmeyecektir.
-
 
 // roottaki Content Folder'i dýþarýya açtýk...
 app.UseStaticFiles(new StaticFileOptions()

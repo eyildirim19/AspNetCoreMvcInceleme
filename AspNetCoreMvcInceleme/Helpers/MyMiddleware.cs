@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreMvcInceleme.Helpers
+﻿namespace AspNetCoreMvcMiddleware.Helpers
 {
     // Bu middeware request detaylarına erişmek için yazıldı...
     public class MyMiddleware
